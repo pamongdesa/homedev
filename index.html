@@ -14,10 +14,13 @@
             <div class="relative flex items-center justify-between h-16">
                 <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex-shrink-0">
-                        <img class="h-full w-full" src="assets/logo.png" alt="Workflow">
+                        <!-- Logo for mobile -->
+                    <img class="block sm:hidden h-50 w-auto" src="assets/mobile-logo.png" alt="Mobile Logo">
+                    <!-- Logo for larger screens -->
+                    <img class="hidden sm:block h-50 w-auto" src="assets/logo.png" alt="Workflow Logo">
                     </div>
                 </div>
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div class="hidden sm:flex absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <div class="flex-shrink-0">
                         <a href="#">Kembali ke LMS Pamong Desa</a>
                     </div>
@@ -101,7 +104,7 @@
                     <!-- Bagian Kiri -->
                     <div class="w-full lg:w-1/2 p-4">
                         <div class="flex items-center mb-4">
-                            <img src="assets/logo.png" alt="Logo" class="h-90 w-90 mr-2" />
+                            <img src="assets/logo.png" alt="Logo" class="h-50 w-auto mr-2" />
                         </div>
                         <h2 class="text-lg font-semibold mb-2">Kementerian Dalam Negeri</h2>
                         <p class="w-3/4 mb-10">
