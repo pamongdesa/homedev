@@ -6,7 +6,17 @@
     <title>Helpdesk Pamong Desa</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .faq-content {
+            max-height: 0;
+            opacity: 0;
+        }
 
+        .faq-content.show {
+            max-height: 500px; /* Adjust this value based on the expected content height */
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <!-- navbar -->
@@ -67,7 +77,13 @@
         <div class="flex flex-wrap justify-center space-x-4 mb-10 mt-20">
             <div class="w-full md:w-1/2 lg:w-1/3 p-4 flex flex-col items-center">
                 <div class="w-full bg-gray-200 rounded-lg shadow-md h-48 flex items-center justify-center" style="background-color: #f5f8FA;">
-                    <span>Video 1</span>
+                    <iframe 
+                    src="https://drive.google.com/file/d/1E85q73vXtyMen16WhbGzjBoBJPV-nf9b/preview" 
+                    width="100%" 
+                    height="100%" 
+                    allow="autoplay" 
+                    style="border-radius: 8px;">
+                </iframe>
                 </div>
                 <h2 class="mt-2 text-xl font-semibold text-center">Registrasi Akun LMS Pemdes</h2>
             </div>
@@ -85,11 +101,36 @@
             <h2 class="text-2xl font-bold mb-4">FAQ</h2>
             <div class="mb-4 border-t border-gray-300">
                 <button class="w-full text-left text-lg font-semibold p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 faq-button flex justify-between items-center">
-                    <span>Lorem ipsum dolor sit amet</span>
+                    <span>Bagaimana cara melakukan pendaftaran pada LMS Pamong Desa? </span>
                     <i class="faq-icon fas fa-chevron-down"></i>
                 </button>
-                <div class="hidden mt-2 p-4">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
+                    <p>
+                        Dapat kami sampaikan mengenai proses pendaftaran, silahkan melihat cuplikan video berikut ini:
+                        <a href="https://bit.ly/3Yzk3dq" target="_blank" style="color: #1a73e8;">https://bit.ly/3Yzk3dq</a>
+                    </p>
+                      <p>Terima kasih.</p>
+                    <p>
+                        Apabila ada pertanyaan lebih lanjut dapat menghubungi email: 
+                        <a href="mailto:support@pamongdesa.id" style="color: #1a73e8;">support@pamongdesa.id</a>.
+                    </p>    
+                </div>
+            </div>
+            <div class="mb-4 border-t border-gray-300">
+                <button class="w-full text-left text-lg font-semibold p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 faq-button flex justify-between items-center">
+                    <span>Apa tujuan dari LMS Pamong Desa?</span>
+                    <i class="faq-icon fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
+                    <p>Dapat kami sampaikan mengenai LMS Pamong Desa bertujuan untuk melatih Aparatur Desa, meningkatkan kapasitas mereka, serta menyediakan akses ke berbagai materi pembelajaran dan pelatihan. Platform ini juga memungkinkan interaksi antar Aparatur Desa.
+                    </p>
+                    <p>
+                        Terima kasih.
+                    </p>
+                    <p>
+                        Apabila ada pertanyaan lebih lanjut dapat menghubungi email: 
+                        <a href="mailto:support@pamongdesa.id" style="color: #1a73e8;">support@pamongdesa.id</a>.
+                    </p>
                 </div>
             </div>
             <div class="mb-4 border-t border-gray-300">
@@ -97,16 +138,7 @@
                     <span>Lorem ipsum dolor sit amet</span>
                     <i class="faq-icon fas fa-chevron-down"></i>
                 </button>
-                <div class="hidden mt-2 p-4">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <div class="mb-4 border-t border-gray-300">
-                <button class="w-full text-left text-lg font-semibold p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 faq-button flex justify-between items-center">
-                    <span>Lorem ipsum dolor sit amet</span>
-                    <i class="faq-icon fas fa-chevron-down"></i>
-                </button>
-                <div class="hidden mt-1 p-4">
+                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
             </div>
@@ -115,12 +147,14 @@
                     <span>Kapan batas terakhir pendaftaran pelatihan Pamong Desa?</span>
                     <i class="faq-icon fas fa-chevron-down"></i>
                 </button>
-                <div class="hidden mt-1 p-4">
+                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
                     <p>Dapat kami sampaikan mengenai Batas waktu pendaftaran untuk pelatihan bulan ini adalah pada akhir Juli. Segera daftarkan desa Anda jika belum melakukannya.</p>
                        
                     <p>Terima kasih.</p>
                         
-                    <p>Apabila ada pertanyaan lebih lanjut dapat menghubungi email : support@pamongdesa.id.</p>
+                    <p>Apabila ada pertanyaan lebih lanjut dapat menghubungi email: 
+                        <a href="mailto:support@pamongdesa.id" style="color: #1a73e8;">support@pamongdesa.id</a>.
+                    </p>
                 </div>
             </div>
             <div class="mb-4 border-t border-gray-300">
@@ -128,12 +162,14 @@
                     <span>Kapan akan mendapatkan verifikasi pendaftaran dan jadwal pelatihan Pamong Desa?</span>
                     <i class="faq-icon fas fa-chevron-down"></i>
                 </button>
-                <div class="hidden mt-1 p-4">
+                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
                     <p>Dapat di sampaikan mengenai verifikasi Notifikasi verifikasi pendaftaran dan jadwal pelatihan akan dikirimkan melalui email yang terdaftar. Terdapat dua pilihan jadwal, yaitu mandiri dan terjadwal (September).</p>
 
                     <p>Terima kasih.</p>
                         
-                    <p>Apabila ada pertanyaan lebih lanjut dapat menghubungi email : support@pamongdesa.id.</p>
+                    <p>Apabila ada pertanyaan lebih lanjut dapat menghubungi email: 
+                        <a href="mailto:support@pamongdesa.id" style="color: #1a73e8;">support@pamongdesa.id</a>.
+                    </p>
                 </div>
             </div>
             <div class="mb-4 border-t border-gray-300">
@@ -141,12 +177,14 @@
                     <span>Mengapa verifikasi belum dilakukan pada email?</span>
                     <i class="faq-icon fas fa-chevron-down"></i>
                 </button>
-                <div class="hidden mt-1 p-4">
+                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
                     <p>Dapat kami sampaikan mengenai verifikasi silakan cek kembali status verifikasi pendaftaran di email Anda. Jika belum menerima email verifikasi, hubungi admin untuk mendapatkan bantuan.</p>
 
                     <p>Terima kasih.</p>
                         
-                    <p>Apabila ada pertanyaan lebih lanjut dapat menghubungi email : support@pamongdesa.id.</p>
+                    <p>Apabila ada pertanyaan lebih lanjut dapat menghubungi email: 
+                        <a href="mailto:support@pamongdesa.id" style="color: #1a73e8;">support@pamongdesa.id</a>.
+                    </p>
                 </div>
             </div>
         </div>
@@ -257,12 +295,21 @@
                 button.addEventListener('click', () => {
                     const content = button.nextElementSibling;
                     const icon = button.querySelector('.faq-icon');
-                    content.classList.toggle('hidden');
+                    
+                    if (content.classList.contains('show')) {
+                        content.classList.remove('show');
+                        content.style.maxHeight = null;
+                    } else {
+                        content.classList.add('show');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+
                     icon.classList.toggle('fa-chevron-down');
                     icon.classList.toggle('fa-chevron-up');
                 });
             });
         });
+
     </script>
 </body>
 </html>
