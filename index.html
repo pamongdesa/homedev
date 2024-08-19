@@ -8,15 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <style>
-        .faq-content {
-            max-height: 0;
-            opacity: 0;
-        }
-
-        .faq-content.show {
-            max-height: 500px; /* Adjust this value based on the expected content height */
-            opacity: 1;
-        }
+.faq-content {
+    /* background-color: rgba(0, 255, 0, 0.1); Highlight to debug */
+    transition: all 0.5s ease-in-out; /* Ensure transition is applied */
+}
     </style>
 </head>
 <body>
@@ -631,10 +626,11 @@
                 <!-- FAQs will be inserted here -->
             </div>
             <div class="flex justify-between items-center mt-6">
-                <button id="prev-button" class="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:opacity-50" onclick="changePage(-1)" disabled>Previous</button>
+                <button id="prev-button" class="px-4 py-2 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 disabled:bg-blue-300 disabled:cursor-not-allowed transition duration-200 ease-in-out" style="background-color: #009EF7;" onclick="changePage(-1)" disabled>Previous</button>
                 <span id="page-info" class="text-lg font-semibold">Page 1</span>
-                <button id="next-button" class="px-4 py-2 bg-blue-500 text-white rounded-lg" onclick="changePage(1)">Next</button>
+                <button id="next-button" class="px-4 py-2 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200 ease-in-out" style="background-color: #009EF7;" onclick="changePage(1)">Next</button>
             </div>
+            
         </div>
     <!-- chat box -->
         <div class="max-w-md lg:max-w-7xl mx-auto p-4 bg-white shadow-md rounded-lg mb-10" style="background-color: #f5f8FA;">
@@ -1156,49 +1152,57 @@
         let currentPage = 1;
 
         function renderFAQs() {
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const faqsToDisplay = faqs.slice(start, end);
-            
-            const faqContainer = document.getElementById('faq-container');
-            faqContainer.innerHTML = '';
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const faqsToDisplay = faqs.slice(start, end);
 
-            faqsToDisplay.forEach(faq => {
-                faqContainer.innerHTML += `
-                    <div class="mb-4 border-t border-gray-300">
-                        <button class="w-full text-left text-lg font-semibold p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 faq-button flex justify-between items-center">
-                            <span>${faq.question}</span>
-                            <i class="faq-icon fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
-                            ${faq.answer}
-                        </div>
-                    </div>
-                `;
-            });
+    const faqContainer = document.getElementById('faq-container');
+    faqContainer.innerHTML = '';
 
-            document.getElementById('page-info').textContent = `Page ${currentPage}`;
-            document.getElementById('prev-button').disabled = currentPage === 1;
-            document.getElementById('next-button').disabled = end >= faqs.length;
-        }
+    faqsToDisplay.forEach((faq, index) => {
+        faqContainer.innerHTML += `
+            <div class="mb-4 border-t border-gray-300">
+                <button class="w-full text-left text-lg font-semibold p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 faq-button flex justify-between items-center">
+                    <span>${faq.question}</span>
+                    <i class="faq-icon fas fa-chevron-down transition-transform duration-300"></i>
+                </button>
+                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
+                    ${faq.answer}
+                </div>
+            </div>
+        `;
+    });
 
-        function changePage(direction) {
-            currentPage += direction;
-            renderFAQs();
-        }
+    document.getElementById('page-info').textContent = `Page ${currentPage}`;
+    document.getElementById('prev-button').disabled = currentPage === 1;
+    document.getElementById('next-button').disabled = end >= faqs.length;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderFAQs();
+    // Reattach event listeners
+    document.querySelectorAll('.faq-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            const isOpen = !content.classList.contains('max-h-0');
 
-            document.querySelectorAll('.faq-button').forEach(button => {
-                button.addEventListener('click', () => {
-                    const content = button.nextElementSibling;
-                    const isOpen = content.classList.contains('max-h-0');
-                    content.classList.toggle('max-h-0', !isOpen);
-                    content.classList.toggle('max-h-screen', isOpen);
-                });
-            });
+            // Toggle content visibility
+            content.classList.toggle('max-h-0', isOpen);
+            content.classList.toggle('max-h-screen', !isOpen);
+
+            // Toggle icon direction
+            icon.classList.toggle('fa-chevron-down', isOpen);
+            icon.classList.toggle('fa-chevron-up', !isOpen);
         });
+    });
+}
+
+function changePage(direction) {
+    currentPage += direction;
+    renderFAQs();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderFAQs();
+});
 
     </script>
 </body>
