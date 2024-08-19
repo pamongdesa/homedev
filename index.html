@@ -1162,11 +1162,11 @@
     faqsToDisplay.forEach((faq, index) => {
         faqContainer.innerHTML += `
             <div class="mb-4 border-t border-gray-300">
-                <button class="w-full text-left text-lg font-semibold p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 faq-button flex justify-between items-center">
+                <button class="w-full text-left text-lg font-semibold p-4 rounded-lg faq-button flex justify-between items-center">
                     <span>${faq.question}</span>
-                    <i class="faq-icon fas fa-chevron-down transition-transform duration-300"></i>
+                    <i class="faq-icon fas fa-chevron-down transition-transform duration-200"></i>
                 </button>
-                <div class="faq-content overflow-hidden transition-all duration-500 ease-in-out max-h-0 mt-2 pr-4 pl-4">
+                <div class="faq-content overflow-hidden transition-all duration-200 ease-in-out max-h-0 mt-2 pr-4 pl-4">
                     ${faq.answer}
                 </div>
             </div>
@@ -1185,12 +1185,25 @@
             const isOpen = !content.classList.contains('max-h-0');
 
             // Toggle content visibility
-            content.classList.toggle('max-h-0', isOpen);
-            content.classList.toggle('max-h-screen', !isOpen);
+            if (isOpen) {
+                content.classList.add('max-h-0');
+                content.classList.add('focus:outline-none');
+                content.classList.remove('max-h-screen');
+                button.style.backgroundColor = '#f8fafc';
+                button.style.color = '#000000'; // Background color when closed
+            } else {
+                content.classList.remove('max-h-0');
+                content.classList.add('max-h-screen');
+                content.classList.add('focus:outline-none');
+
+                button.style.backgroundColor = '#e2e8f0';
+                button.style.color = '#1e90ff'; // Background color when open
+            }
 
             // Toggle icon direction
             icon.classList.toggle('fa-chevron-down', isOpen);
             icon.classList.toggle('fa-chevron-up', !isOpen);
+            
         });
     });
 }
